@@ -4,5 +4,6 @@ CLI tool for detecting OS appearance theme
 
 ```bash
 ❯ make
-❯ ./bin/ostheme [--observe]
+❯ sudo make install
+❯ ostheme [--observe]
 ```
