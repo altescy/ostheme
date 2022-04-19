@@ -1,5 +1,9 @@
-ifeq ($(shell uname),Darwin)
-	PLATFORM = macos
+PLATFORM := "auto"
+
+ifeq ($(PLATFORM),"auto")
+	ifeq ($(shell uname),Darwin)
+		PLATFORM = macos
+	endif
 endif
 
 all:
