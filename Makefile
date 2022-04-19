@@ -1,6 +1,7 @@
-PLATFORM := "auto"
+PLATFORM     := auto
+INSTALL_PATH := /usr/bin
 
-ifeq ($(PLATFORM),"auto")
+ifeq ($(PLATFORM),auto)
 	ifeq ($(shell uname),Darwin)
 		PLATFORM = macos
 	else ifeq ($(shell uname),Linux)
@@ -15,3 +16,6 @@ all:
 
 clean:
 	make -f src/$(PLATFORM)/Makefile clean
+
+install:
+	cp bin/ostheme $(INSTALL_PATH)/ostheme
