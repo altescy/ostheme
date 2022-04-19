@@ -1,6 +1,6 @@
 # ostheme
 
-CLI for detecting OS appearance theme
+CLI tool for detecting OS appearance theme
 
 ```bash
 ❯ make
