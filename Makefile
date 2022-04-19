@@ -11,11 +11,14 @@ ifeq ($(PLATFORM),auto)
 	endif
 endif
 
+.PHONY: all
 all:
 	make -f src/$(PLATFORM)/Makefile
 
+.PHONY: clean
 clean:
 	make -f src/$(PLATFORM)/Makefile clean
 
+.PHONY: install
 install:
 	cp bin/ostheme $(INSTALL_PATH)/ostheme
