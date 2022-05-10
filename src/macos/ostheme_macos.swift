@@ -1,11 +1,6 @@
-import Foundation
 import Cocoa
 import Darwin.C
-
-func showCurrentMode() {
-    print(UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light")
-    fflush(stdout)
-}
+import Foundation
 
 class Observer {
     func observe() {
@@ -19,10 +14,11 @@ class Observer {
     func interfaceModeChanged(_ notification: Notification) {
         showCurrentMode()
     }
+    func showCurrentMode() {
+        print(UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light")
+        fflush(stdout)
+    }
 }
-
-let app = NSApplication.shared
-let observer = Observer.init()
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -30,8 +26,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
-showCurrentMode()
+let observer = Observer.init()
+observer.showCurrentMode()
 if CommandLine.arguments.contains("--observe") {
+    let app = NSApplication.shared
     let delegate = AppDelegate()
     app.delegate = delegate
     app.run()
